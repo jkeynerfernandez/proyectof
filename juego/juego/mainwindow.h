@@ -1,9 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QString>>
+#include <QString>
 #include <QGraphicsScene>//para la escena
 #include <QMainWindow>
+#include "nave.h"
+#include "naveenemigo.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,5 +23,7 @@ private:
     Ui::MainWindow *ui;
     QString h;
     QGraphicsScene *escena; // recuerda eliminar en destructor
+    nave *personaje;
+    naveenemigo *enemigo[3];
 };
 #endif // MAINWINDOW_H

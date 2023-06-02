@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    nave.cpp
+    nave.cpp \
+    naveenemigo.cpp
 
 HEADERS += \
     mainwindow.h \
-    nave.h
+    nave.h \
+    naveenemigo.h
 
 FORMS += \
     mainwindow.ui
