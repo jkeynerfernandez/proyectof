@@ -12,49 +12,43 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Form
+class Ui_MainWindow
 {
 public:
-    QGraphicsView *marcoVisualdeljuego;
+    QWidget *centralwidget;
+    QGraphicsView *graphicsView;
 
-    void setupUi(QWidget *Form)
+    void setupUi(QMainWindow *MainWindow)
     {
-        if (Form->objectName().isEmpty())
-            Form->setObjectName("Form");
-        Form->resize(400, 300);
-        marcoVisualdeljuego = new QGraphicsView(Form);
-        marcoVisualdeljuego->setObjectName("marcoVisualdeljuego");
-        marcoVisualdeljuego->setEnabled(true);
-        marcoVisualdeljuego->setGeometry(QRect(0, 0, 1026, 553));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(marcoVisualdeljuego->sizePolicy().hasHeightForWidth());
-        marcoVisualdeljuego->setSizePolicy(sizePolicy);
-        marcoVisualdeljuego->setMaximumSize(QSize(1500, 904));
-        marcoVisualdeljuego->setAcceptDrops(false);
+        if (MainWindow->objectName().isEmpty())
+            MainWindow->setObjectName("MainWindow");
+        MainWindow->resize(707, 387);
+        centralwidget = new QWidget(MainWindow);
+        centralwidget->setObjectName("centralwidget");
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName("graphicsView");
+        graphicsView->setGeometry(QRect(10, 10, 591, 341));
+        MainWindow->setCentralWidget(centralwidget);
 
-        retranslateUi(Form);
+        retranslateUi(MainWindow);
 
-        QMetaObject::connectSlotsByName(Form);
+        QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
-    void retranslateUi(QWidget *Form)
+    void retranslateUi(QMainWindow *MainWindow)
     {
-        Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
-#if QT_CONFIG(tooltip)
-        marcoVisualdeljuego->setToolTip(QCoreApplication::translate("Form", "<html><head/><body><p><img src=\":/imagenes/escenario/calles1.jpg\"/></p></body></html>", nullptr));
-#endif // QT_CONFIG(tooltip)
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Form: public Ui_Form {};
+    class MainWindow: public Ui_MainWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE
