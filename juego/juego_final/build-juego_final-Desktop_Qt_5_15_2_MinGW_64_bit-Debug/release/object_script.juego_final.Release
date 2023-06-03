@@ -1,0 +1,13 @@
+release/main.o
+release/mainwindow.o
+release/mov_parabolico.o
+release/nave.o
+release/naveEnemigo.o
+release/obstaculo_cuadrito.o
+release/recompensa.o
+release/qrc_imagenes.o
+release/moc_mainwindow.o
+release/moc_nave.o
+release/moc_naveEnemigo.o
+release/moc_obstaculo_cuadrito.o
+release/moc_recompensa.o

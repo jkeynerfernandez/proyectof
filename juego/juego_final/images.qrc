@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/playmove.png</file>
+        <file>images/Pueblo.png</file>
+        <file>images/gato/Gw.png</file>
+        <file>images/Gw.png</file>
+    </qresource>
+</RCC>

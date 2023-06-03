@@ -1,0 +1,13 @@
+debug/main.o
+debug/mainwindow.o
+debug/mov_parabolico.o
+debug/nave.o
+debug/naveEnemigo.o
+debug/obstaculo_cuadrito.o
+debug/recompensa.o
+debug/qrc_imagenes.o
+debug/moc_mainwindow.o
+debug/moc_nave.o
+debug/moc_naveEnemigo.o
+debug/moc_obstaculo_cuadrito.o
+debug/moc_recompensa.o
