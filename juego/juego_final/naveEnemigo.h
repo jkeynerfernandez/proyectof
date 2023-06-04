@@ -9,15 +9,30 @@
 class NaveEnemigo : public nave
 {
     Q_OBJECT
+
+public:
+//    int velocidadMinima = 1;
+//    int velocidadMaxima = 5;
+//    int velocidad = rand() % (velocidadMaxima - velocidadMinima + 1) + velocidadMinima;
+
+//    int posXMinima = 0;
+//    int posXMaxima = 800; // Suponiendo que la escena tiene un ancho de 800
+//    int posicionInicialX = rand() % (posXMaxima - posXMinima + 1) + posXMinima;
+// //   setX(posicionInicialX);
+
+
 public:
 
   //  NaveEnemigo();
+
 
 
     explicit NaveEnemigo(QObject *parent = nullptr);
 
 
     void run();
+    void move();
+   // void inicializarValores();
 
 
 private: QList<NaveEnemigo*> enemigos;

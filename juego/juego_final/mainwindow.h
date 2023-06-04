@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QThread>
 #include <QPixmap>
+#include <QRandomGenerator>
 
 class NaveEnemigo; //#include "naveEnemigo.h"
 #include "nave.h"
@@ -30,6 +31,7 @@ public:
 
     void keyPressEvent(QKeyEvent *evento);
     void keyRelease(QKeyEvent *evento);
+    void generarNavesEnemigas();
 
 private slots:
     void on_pushButton_clicked();
@@ -43,7 +45,9 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nave *UNSC;
-    QList<NaveEnemigo*> enemigos;  // Aquí usas NaveEnemigo, asegúrate de que esté declarado
+    QList<NaveEnemigo*> enemigos;
+
+    QList<NaveEnemigo*> navesEnemigas;// Aquí usas NaveEnemigo, asegúrate de que esté declarado
     QTimer *timer;
     QTimer *time;
     QTimer *tempo;
@@ -52,7 +56,7 @@ private:
 
     bool EvaluarColision(QVector<QGraphicsItem*> vec);
     bool EvaluarColisionnaveEnemigo(QVector<QGraphicsItem*> vec);
-    void generarEnemigos();
+ //   void generarEnemigos();
 };
 
 #endif // MAINWINDOW_H

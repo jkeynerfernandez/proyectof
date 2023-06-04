@@ -11,20 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->marcoVisualdeljuego->setScene(scene);
     //generarEnemigos();
 
-    for (int i = 0; i < 3; i++) {
-        NaveEnemigo* enemigo = new NaveEnemigo();
-        enemigo->posicion(300,200);
+   // generarEnemigos();
 
-        scene->addItem(enemigo);//la forcé
-        enemigos.append(enemigo);//la forcé
-    }
-
-
-
-
-
-
-
+       // Conectar temporizador al método ActualizarPosicion()
+    connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion);
 
     ui->marcoVisualdeljuego->setBackgroundBrush(QBrush((QImage(":/imagenes/escenario/fondo.png"))));
 
@@ -36,6 +26,13 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(UNSC);
     UNSC->posicion(200,200);
 
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion); // Conecta el temporizador al método ActualizarPosicion()
+    timer ->start(100);
+
+    generarNavesEnemigas();
+    ActualizarPosicion();
+
 
 
     timer = new QTimer();
@@ -45,27 +42,10 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(timer, SIGNAL(timeout()),this,SLOT(hmov()));
     connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
 
-//    void generarEnemigos() {
-//        for (int i = 0; i < 3; i++) {
-//            NaveEnemigo* enemigo = new NaveEnemigo();
-//            enemigo->posicion(300,200);
 
-//            scene->addItem(enemigo);
-//            enemigos.append(enemigo);
-//        }
-//    }
 
 
 }
-//void generarEnemigos() {
-//    for (int i = 0; i < 3; i++) {
-//        NaveEnemigo* enemigo = new NaveEnemigo();
-//        enemigo->posicion(300,200);
-
-//        scene->addItem(enemigo);//la forcé
-//        this.enemigos.append(enemigo);//la forcé
-//    }
-//}
 
 
 MainWindow::~MainWindow()
@@ -110,48 +90,12 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
     }
     UNSC->posicion();
 
- //__________________movimiento de enemigo_______________________________
-
-        //{
-//            if((UNSC)->collidesWithItem(enemigos)){
 
 
 
-//                //descontar vida___
-//                 UNSC->setVidas(UNSC->getVidas()-1);
-//                connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
-//                //_________________
-//                connect(tempo,&QTimer::timeout,this,&::MainWindow::EliminarFantasma);
-
-
-//                 UNSC->posicion(200,200);
-
-//            }
-//            }
-
-
-//        if(evento->key()==Qt::Key_Space)
-//        {
-//       //si enemigo mira para la derecha ang 1, para la izquierda 2
-//            if(COVENANT->getDireccion()==70){
-
-//             pelota = new mov_parabolico(COVENANT->getX(),-COVENANT->getY(),150,2);
-//            }else if(COVENANT->getDireccion()==35){
-//            pelota = new mov_parabolico(COVENANT->getX(),-COVENANT->getY(),150,1);}
-
-//            scene->addItem(pelota);
-//            time = new QTimer();
-//            time->start(60);
-//            timer->start(1000);
-//            connect(time,SIGNAL(timeout()),this,SLOT(ActualizarPosicion()));
-//            connect(timer, SIGNAL(timeout()), this, SLOT(EliminarPelota()));
-//        }
-
-
-        //COVENANT->posicion();
 }
 
-//hilo = new QThread();
+
 
 
 void MainWindow::keyRelease(QKeyEvent *evento){
@@ -203,49 +147,58 @@ bool MainWindow::EvaluarColision(QVector<QGraphicsItem*>vec)
 //    return false;
 //}
 
+void MainWindow::generarNavesEnemigas()
+{
+    // Eliminar las naves enemigas existentes
+        foreach (NaveEnemigo *enemigo, navesEnemigas) {
+            scene->removeItem(enemigo);
+            delete enemigo;
+        }
+        navesEnemigas.clear();
 
-//void generarEnemigos() {
-//    for (int i = 0; i < 3; i++) {
-//        NaveEnemigo* enemigo = new NaveEnemigo();
-//        enemigo->posicion(300,200);
+        // Generar nuevas naves enemigas
+        int numNaves = 3;
+        for (int i = 0; i < numNaves; ++i) {
+            NaveEnemigo *enemigo = new NaveEnemigo();
+            // Establecer las posiciones aleatorias para cada nave enemiga
+            int x = QRandomGenerator::global()->bounded(1000 - enemigo->boundingRect().width());
+            int y = rand() % static_cast<int>(500 - enemigo->boundingRect().height());
 
-//        scene->addItem(enemigo);
-//        enemigos.append(enemigo);
-//    }
-//}
+            enemigo->setPos(x, y);
+            scene->addItem(enemigo);
+            navesEnemigas.append(enemigo);
 
-//_______________pelota__________________
+
+        }
+}
 void MainWindow::ActualizarPosicion()
 {
-    pelota->CalcularVelocidad();
-    pelota->CalcularPosicion();
-    pelota->ActualizarVelocidad();
-    if(pelota->getPosy()>0)
-       time->stop();
+
+
+    for (NaveEnemigo *enemigo : navesEnemigas) {
+        enemigo->moveBy(-2, 0); // Ajusta la velocidad de desplazamiento según tus necesidades
+    }
+
+//    pelota->CalcularVelocidad();
+//    pelota->CalcularPosicion();
+//    pelota->ActualizarVelocidad();
+//    if(pelota->getPosy()>0)
+//       time->stop();
 }
 
 
-void MainWindow::EliminarPelota()
-{
-int timep=0;
-timep++;
-if(timep==100000);
-//if(pelota->getPosx()==-(UNSC->getX()+200)){
-scene->removeItem(pelota);}
-
-void MainWindow::EliminarFantasma()
-{
-    /*int timep=0;
-    timep++;
-    if(timep==5);*/
-
-}
-
-void MainWindow::on_pushButton_clicked()
-{
 
 
-    //if(time->isActive()) time->stop();
 
-}
+
+
+
+
+
+
+
+
+
+
+
 

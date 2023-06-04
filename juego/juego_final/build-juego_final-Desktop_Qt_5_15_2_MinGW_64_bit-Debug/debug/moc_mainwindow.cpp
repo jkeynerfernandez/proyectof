@@ -117,11 +117,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
+       // case 0: _t->on_pushButton_clicked(); break;
         case 1: _t->ActualizarPosicion(); break;
         case 2: _t->ActualizarVidas(); break;
-        case 3: _t->EliminarPelota(); break;
-        case 4: _t->EliminarFantasma(); break;
+     //   case 3: _t->EliminarPelota(); break;
+        //case 4: _t->EliminarFantasma(); break;
         default: ;
         }
     }
