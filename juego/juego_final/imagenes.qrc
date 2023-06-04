@@ -3,5 +3,6 @@
         <file>imagenes/escenario/fondo.png</file>
         <file>imagenes/enemigo/enemigo.png</file>
         <file>imagenes/UNSC/personaje.png</file>
+        <file>imagenes/UNSC/bala.png</file>
     </qresource>
 </RCC>

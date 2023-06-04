@@ -9,6 +9,7 @@
 #include <QThread>
 #include <QPixmap>
 #include <QRandomGenerator>
+#include "bala.h"
 
 class NaveEnemigo; //#include "naveEnemigo.h"
 #include "nave.h"
@@ -32,26 +33,30 @@ public:
     void keyPressEvent(QKeyEvent *evento);
     void keyRelease(QKeyEvent *evento);
     void generarNavesEnemigas();
+    void CrearBala();
 
 private slots:
-    void on_pushButton_clicked();
+   // void on_pushButton_clicked();
     void ActualizarPosicion();
     void ActualizarVidas();
-    void EliminarPelota();
-    void EliminarFantasma();
+    void ActualizarPosicionBala();
+    void EliminarBala();
+   // void EliminarFantasma();
 
 private:
     int vel;
+    bala *nuevabala;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nave *UNSC;
     QList<NaveEnemigo*> enemigos;
 
     QList<NaveEnemigo*> navesEnemigas;// Aquí usas NaveEnemigo, asegúrate de que esté declarado
-    QTimer *timer;
-    QTimer *time;
+    QList<bala*> balas;
+    QTimer *timer;//para actualizacion
+    QTimer *time;//para la bala
     QTimer *tempo;
-    mov_parabolico *pelota;
+   // mov_parabolico *bala;
     QVector<QGraphicsItem*> Obstaculos;
 
     bool EvaluarColision(QVector<QGraphicsItem*> vec);

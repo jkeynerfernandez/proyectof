@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bala.cpp \
     main.cpp \
     mainwindow.cpp \
     mov_parabolico.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
     naveEnemigo.cpp
 
 HEADERS += \
+    bala.h \
     mainwindow.h \
     mov_parabolico.h \
     nave.h \

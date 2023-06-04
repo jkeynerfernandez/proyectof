@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "naveEnemigo.h"
+#include "bala.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -26,21 +27,36 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(UNSC);
     UNSC->posicion(200,200);
 
+//    time = new QTimer(this);
+//    connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
+//    time->start(10);
+    //bala= new mov_parabolico(0,-300,30,0);
+    //bala *nuevabala  = new bala();
+
+      generarNavesEnemigas();
+
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion); // Conecta el temporizador al método ActualizarPosicion()
     timer ->start(100);
 
-    generarNavesEnemigas();
+   // generarNavesEnemigas();
     ActualizarPosicion();
 
 
 
-    timer = new QTimer();
-    timer->start(10);
+//    timer = new QTimer();
+//    timer->start(10);
    // timer->stop();
 
+   // time = new QTimer(this);
+    //connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala);
+
+  //  connect(time, SIGNAL(timeout()), this, SLOT(EliminarBala()));
+
     //connect(timer, SIGNAL(timeout()),this,SLOT(hmov()));
-    connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
+   // connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
+//connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
+    //connect(time, &QTimer::timeout, this, &MainWindow::EliminarBala);
 
 
 
@@ -87,6 +103,14 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
     else if(evento->key()==Qt::Key_A)
     {
         UNSC->MoveLeft();
+    }
+
+    else if(evento->key()==Qt::Key_P ){
+
+        nuevabala = new bala();
+        scene->addItem(nuevabala);
+        nuevabala->setPos(UNSC->getX() + UNSC->boundingRect().width() / 2, UNSC->getY());
+
     }
     UNSC->posicion();
 
@@ -171,6 +195,26 @@ void MainWindow::generarNavesEnemigas()
 
         }
 }
+void MainWindow::CrearBala()
+{
+    // Crear una nueva bala con velocidad inicial y aceleración
+  //  double velocidadInicial = 10.0;  // Ajusta este valor según la velocidad inicial deseada
+   // double aceleracion = 0.5;  // Ajusta este valor según la aceleración deseada
+ //   nuevabala = new bala(velocidadInicial, aceleracion);
+
+ //   nuevabala->setPos(UNSC->getX() + UNSC->boundingRect().width() / 2, UNSC->getY() + UNSC->boundingRect().height() / 2);
+
+ //   balas.append(nuevabala);
+ //   scene->addItem(nuevabala);
+   // balas.append(nuevabala);
+
+//    connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala);
+    //time->start(10);
+
+    // Resto del código...
+}
+
+
 void MainWindow::ActualizarPosicion()
 {
 
@@ -186,8 +230,51 @@ void MainWindow::ActualizarPosicion()
         if (navesEnemigas.isEmpty()) {
                 generarNavesEnemigas();
             }
+//        if (nuevabala->pos().x() + nuevabala->boundingRect().width() < 0) {
+//                    // Eliminar la nave enemiga de la escena
+//                    scene->removeItem(nuevabala);
+//                    navesEnemigas.removeOne(nuevabala);
+//                    delete nuevabala;
+//                }
+    }}
 
-    }
+void MainWindow::ActualizarPosicionBala()
+{
+    nuevabala->mover();
+
+       // Verificar si la bala ha superado el límite derecho de la escena
+       if (nuevabala->x() > scene->sceneRect().right()) {
+           scene->removeItem(nuevabala);
+           delete nuevabala;
+           nuevabala = nullptr;  // Establecer el puntero a nullptr para evitar accesos no deseados
+           time->stop();  // Detener el temporizador si se elimina la bala
+       }
+//       nuevabala->CalcularPosicion();
+//       nuevabala->ActualizarVelocidad();
+//       if(nuevabala->getPosy()>0){
+//        time->stop();}
+
+}
+
+void MainWindow::EliminarBala()
+{
+//    QList<bala *> balasEliminadas;
+//       for (bala *b : balas)
+//       {
+//           if (b->pos().y() > 0)
+//           {
+//               balasEliminadas.append(b);
+//               scene->removeItem(b);
+//               delete b;
+//           }
+//       }
+
+//       foreach (bala *b, balasEliminadas)
+//       {
+//           balas.removeOne(b);
+//       }
+}
+
 
 
 
@@ -196,7 +283,7 @@ void MainWindow::ActualizarPosicion()
 //    pelota->ActualizarVelocidad();
 //    if(pelota->getPosy()>0)
 //       time->stop();
-}
+
 
 
 
