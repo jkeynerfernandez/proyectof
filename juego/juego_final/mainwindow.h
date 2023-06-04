@@ -31,21 +31,27 @@ public:
     ~MainWindow();
 
     void keyPressEvent(QKeyEvent *evento);
+  //  void keyReleaseEvent(QKeyEvent *evento);
+
     void keyRelease(QKeyEvent *evento);
     void generarNavesEnemigas();
     void CrearBala();
 
 private slots:
    // void on_pushButton_clicked();
+    void EvaluarColision();
     void ActualizarPosicion();
     void ActualizarVidas();
     void ActualizarPosicionBala();
     void EliminarBala();
+    void ReiniciarPosicionUNSC();
    // void EliminarFantasma();
 
 private:
     int vel;
+
     bala *nuevabala;
+    //NaveEnemigo *enemigo;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nave *UNSC;
@@ -53,13 +59,14 @@ private:
 
     QList<NaveEnemigo*> navesEnemigas;// Aquí usas NaveEnemigo, asegúrate de que esté declarado
     QList<bala*> balas;
+    QTimer *tiempoparaevaluarcolision;
     QTimer *timer;//para actualizacion
     QTimer *time;//para la bala
     QTimer *tempo;
    // mov_parabolico *bala;
     QVector<QGraphicsItem*> Obstaculos;
 
-    bool EvaluarColision(QVector<QGraphicsItem*> vec);
+   // bool EvaluarColision(QVector<QGraphicsItem*> vec);
     bool EvaluarColisionnaveEnemigo(QVector<QGraphicsItem*> vec);
  //   void generarEnemigos();
 };

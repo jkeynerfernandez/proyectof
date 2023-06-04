@@ -24,5 +24,5 @@ void bala::mover()
     // Mover la bala según la velocidad final calculada
    // setPos(x() + velocidadFinal, y());
     // Mover la bala horizontalmente en el eje X
-    setPos(x() + 1, y()); // Puedes ajustar la velocidad cambiando el valor de 1
+    setPos(x() + 5, y()); // Puedes ajustar la velocidad cambiando el valor de 1
 }

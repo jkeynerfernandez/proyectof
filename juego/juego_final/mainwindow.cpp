@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
    // generarEnemigos();
 
        // Conectar temporizador al método ActualizarPosicion()
-    connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion);
+ connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion);
 
     ui->marcoVisualdeljuego->setBackgroundBrush(QBrush((QImage(":/imagenes/escenario/fondo.png"))));
 
@@ -33,14 +33,17 @@ MainWindow::MainWindow(QWidget *parent)
     //bala= new mov_parabolico(0,-300,30,0);
     //bala *nuevabala  = new bala();
 
-      generarNavesEnemigas();
+
 
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion); // Conecta el temporizador al método ActualizarPosicion()
     timer ->start(100);
+    connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion); // Conecta el temporizador al método ActualizarPosicion()
+    generarNavesEnemigas();
 
    // generarNavesEnemigas();
     ActualizarPosicion();
+
+
 
 
 
@@ -111,6 +114,11 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
         scene->addItem(nuevabala);
         nuevabala->setPos(UNSC->getX() + UNSC->boundingRect().width() / 2, UNSC->getY());
 
+        tiempoparaevaluarcolision= new QTimer(this);
+        tiempoparaevaluarcolision->start(10);
+        connect(tiempoparaevaluarcolision, &QTimer::timeout, this, &MainWindow::EvaluarColision);//porizador al método ActualizarPosicion()
+
+
     }
     UNSC->posicion();
 
@@ -149,27 +157,48 @@ void MainWindow::ActualizarVidas()
 
 }
 
-bool MainWindow::EvaluarColision(QVector<QGraphicsItem*>vec)
+void MainWindow::EvaluarColision()
 {
+    QList<NaveEnemigo*> navesEliminadas;
+    foreach (NaveEnemigo *enemigo, navesEnemigas) {
+            if (nuevabala->collidesWithItem(enemigo)) {
+                // Colisión detectada, eliminar la bala y la nave enemiga
+                navesEliminadas.append(enemigo);
+                scene->removeItem(nuevabala);
+                delete nuevabala;
+                break;
+               // tiempoparaevaluarcolision->stop();
 
+              // tiempoparaevaluarcolision->stop();
+                 // Salir del bucle para evitar colisiones múltiples en el mismo paso de tiempo
+            }
+    }
+
+    foreach (NaveEnemigo *enemigoEliminado, navesEliminadas) {
+        scene->removeItem(enemigoEliminado);
+        navesEnemigas.removeOne(enemigoEliminado);
+        delete enemigoEliminado;
+    }
+
+
+                // Detener el temporizador después de evaluar la colisión
+    tiempoparaevaluarcolision->stop();
+
+    if (navesEnemigas.isEmpty()) {
+           generarNavesEnemigas();
+       }
+
+                //tiempoparaevaluarcolision->stop();
+}
 //    QVector<QGraphicsItem*>::Iterator it;
 //    for(it=vec.begin(); it!=vec.end(); it++)
 //    {
 //        if((*it)->collidesWithItem(UNSC) || (*it)->collidesWithItem(COVENANT))
 //            return true;}
 //    return false;
-}
 
-//bool MainWindow::EvaluarColisionenemigo(QVector<QGraphicsItem*>vec)
-//{
 
-//    QVector<QGraphicsItem*>::Iterator it;
-//    for(it=vec.begin(); it!=vec.end(); it++)
-//    {
-//        if((*it)->collidesWithItem(COVENANT))
-//            return true;}
-//    return false;
-//}
+
 
 void MainWindow::generarNavesEnemigas()
 {
@@ -185,7 +214,7 @@ void MainWindow::generarNavesEnemigas()
         for (int i = 0; i < numNaves; ++i) {
             NaveEnemigo *enemigo = new NaveEnemigo();
             // Establecer las posiciones aleatorias para cada nave enemiga
-            int x = QRandomGenerator::global()->bounded(1000 - enemigo->boundingRect().width());
+            int x = QRandomGenerator::global()->bounded( 1000- enemigo->boundingRect().width());
             int y = rand() % static_cast<int>(500 - enemigo->boundingRect().height());
 
             enemigo->setPos(x, y);
@@ -218,18 +247,27 @@ void MainWindow::CrearBala()
 void MainWindow::ActualizarPosicion()
 {
 
-
+     QList<NaveEnemigo*> navesEliminadas;
     for (NaveEnemigo *enemigo : navesEnemigas) {
         enemigo->moveBy(-6, 0); // Ajusta la velocidad de desplazamiento según tus necesidades
         if (enemigo->pos().x() + enemigo->boundingRect().width() < 0) {
                     // Eliminar la nave enemiga de la escena
-                    scene->removeItem(enemigo);
-                    navesEnemigas.removeOne(enemigo);
-                    delete enemigo;
-                }
+            scene->removeItem(enemigo);
+            navesEnemigas.removeOne(enemigo);
+            delete enemigo;
+        }
+
+        for (NaveEnemigo* enemigoEliminado : navesEliminadas) {
+              navesEnemigas.removeOne(enemigoEliminado);
+              delete enemigoEliminado;
+          }
+
         if (navesEnemigas.isEmpty()) {
                 generarNavesEnemigas();
             }
+
+
+
 //        if (nuevabala->pos().x() + nuevabala->boundingRect().width() < 0) {
 //                    // Eliminar la nave enemiga de la escena
 //                    scene->removeItem(nuevabala);
@@ -238,9 +276,17 @@ void MainWindow::ActualizarPosicion()
 //                }
     }}
 
+void MainWindow::ReiniciarPosicionUNSC()
+{
+    UNSC->posicion(200, 200);
+}
+
 void MainWindow::ActualizarPosicionBala()
 {
     nuevabala->mover();
+
+
+
 
        // Verificar si la bala ha superado el límite derecho de la escena
        if (nuevabala->x() > scene->sceneRect().right()) {
@@ -249,6 +295,8 @@ void MainWindow::ActualizarPosicionBala()
            nuevabala = nullptr;  // Establecer el puntero a nullptr para evitar accesos no deseados
            time->stop();  // Detener el temporizador si se elimina la bala
        }
+
+
 //       nuevabala->CalcularPosicion();
 //       nuevabala->ActualizarVelocidad();
 //       if(nuevabala->getPosy()>0){
@@ -258,31 +306,9 @@ void MainWindow::ActualizarPosicionBala()
 
 void MainWindow::EliminarBala()
 {
-//    QList<bala *> balasEliminadas;
-//       for (bala *b : balas)
-//       {
-//           if (b->pos().y() > 0)
-//           {
-//               balasEliminadas.append(b);
-//               scene->removeItem(b);
-//               delete b;
-//           }
-//       }
 
-//       foreach (bala *b, balasEliminadas)
-//       {
-//           balas.removeOne(b);
-//       }
 }
 
-
-
-
-//    pelota->CalcularVelocidad();
-//    pelota->CalcularPosicion();
-//    pelota->ActualizarVelocidad();
-//    if(pelota->getPosy()>0)
-//       time->stop();
 
 
 
