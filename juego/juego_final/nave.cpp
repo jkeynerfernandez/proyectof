@@ -36,7 +36,7 @@ nave::nave(QObject *parent)
     : QObject{parent}
 {
     timer = new QTimer();
-    pixmap = new QPixmap(":/imagenes/gato/personaje.png");
+    pixmap = new QPixmap(":/imagenes/UNSC/personaje.png");
 
     filas = 0;
     columnas = 0;

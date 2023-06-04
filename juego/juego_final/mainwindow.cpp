@@ -176,8 +176,20 @@ void MainWindow::ActualizarPosicion()
 
 
     for (NaveEnemigo *enemigo : navesEnemigas) {
-        enemigo->moveBy(-2, 0); // Ajusta la velocidad de desplazamiento según tus necesidades
+        enemigo->moveBy(-6, 0); // Ajusta la velocidad de desplazamiento según tus necesidades
+        if (enemigo->pos().x() + enemigo->boundingRect().width() < 0) {
+                    // Eliminar la nave enemiga de la escena
+                    scene->removeItem(enemigo);
+                    navesEnemigas.removeOne(enemigo);
+                    delete enemigo;
+                }
+        if (navesEnemigas.isEmpty()) {
+                generarNavesEnemigas();
+            }
+
     }
+
+
 
 //    pelota->CalcularVelocidad();
 //    pelota->CalcularPosicion();

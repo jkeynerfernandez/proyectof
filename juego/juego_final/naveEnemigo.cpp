@@ -16,7 +16,7 @@ void inicializarValores();
 
 NaveEnemigo::NaveEnemigo(QObject *parent):nave(parent)
 {
-    pixmap= new QPixmap(":/imagenes/perro/enemigo.png");  // Ruta de la imagen del enemigo
+    pixmap= new QPixmap(":/imagenes/enemigo/enemigo.png");  // Ruta de la imagen del enemigo
 
            // Conectar la señal de destrucción a la ranura correspondiente
     connect(this, &NaveEnemigo::destruido, this, &NaveEnemigo::manejarDestruccion);

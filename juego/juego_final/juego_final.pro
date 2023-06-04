@@ -20,17 +20,13 @@ SOURCES += \
     mainwindow.cpp \
     mov_parabolico.cpp \
     nave.cpp \
-    naveEnemigo.cpp \
-    obstaculo_cuadrito.cpp \
-    recompensa.cpp
+    naveEnemigo.cpp
 
 HEADERS += \
     mainwindow.h \
     mov_parabolico.h \
     nave.h \
-    naveEnemigo.h \
-    obstaculo_cuadrito.h \
-    recompensa.h
+    naveEnemigo.h
 
 FORMS += \
     mainwindow.ui

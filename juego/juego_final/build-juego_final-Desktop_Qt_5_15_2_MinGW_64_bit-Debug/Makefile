@@ -315,6 +315,7 @@ Makefile: ../juego_final.pro C:/Qt/6.4.2/mingw_64/mkspecs/win32-g++/qmake.conf C
 		C:/Qt/6.4.2/mingw_64/mkspecs/features/qt_config.prf \
 		C:/Qt/6.4.2/mingw_64/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/6.4.2/mingw_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/6.4.2/mingw_64/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/6.4.2/mingw_64/mkspecs/features/toolchain.prf \
 		C:/Qt/6.4.2/mingw_64/mkspecs/features/default_pre.prf \
@@ -344,7 +345,6 @@ Makefile: ../juego_final.pro C:/Qt/6.4.2/mingw_64/mkspecs/win32-g++/qmake.conf C
 		C:/Qt/6.4.2/mingw_64/lib/Qt6Gui.prl \
 		C:/Qt/6.4.2/mingw_64/lib/Qt6Core.prl \
 		C:/Qt/6.4.2/mingw_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		C:/Qt/6.4.2/mingw_64/mkspecs/features/build_pass.prf \
 		../imagenes.qrc
 	$(QMAKE) -o Makefile ..\juego_final.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -593,6 +593,7 @@ C:/Qt/6.4.2/mingw_64/mkspecs/features/qt_functions.prf:
 C:/Qt/6.4.2/mingw_64/mkspecs/features/qt_config.prf:
 C:/Qt/6.4.2/mingw_64/mkspecs/win32-g++/qmake.conf:
 C:/Qt/6.4.2/mingw_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/6.4.2/mingw_64/mkspecs/features/exclusive_builds.prf:
 C:/Qt/6.4.2/mingw_64/mkspecs/features/toolchain.prf:
 C:/Qt/6.4.2/mingw_64/mkspecs/features/default_pre.prf:
@@ -622,7 +623,6 @@ C:/Qt/6.4.2/mingw_64/lib/Qt6Widgets.prl:
 C:/Qt/6.4.2/mingw_64/lib/Qt6Gui.prl:
 C:/Qt/6.4.2/mingw_64/lib/Qt6Core.prl:
 C:/Qt/6.4.2/mingw_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 C:/Qt/6.4.2/mingw_64/mkspecs/features/build_pass.prf:
 ../imagenes.qrc:
 qmake: FORCE
