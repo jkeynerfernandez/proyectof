@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     bala.cpp \
+    fragata.cpp \
     main.cpp \
     mainwindow.cpp \
     mov_parabolico.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     bala.h \
+    fragata.h \
     mainwindow.h \
     mov_parabolico.h \
     nave.h \
@@ -40,4 +42,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     imagenes.qrc
+
+DISTFILES += \
+    imagenes/UNSC/fragata.png
 

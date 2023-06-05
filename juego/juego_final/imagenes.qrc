@@ -4,5 +4,6 @@
         <file>imagenes/enemigo/enemigo.png</file>
         <file>imagenes/UNSC/personaje.png</file>
         <file>imagenes/UNSC/bala.png</file>
+        <file>imagenes/UNSC/fragata.png</file>
     </qresource>
 </RCC>

@@ -10,6 +10,7 @@
 #include <QPixmap>
 #include <QRandomGenerator>
 #include "bala.h"
+#include "fragata.h"
 
 class NaveEnemigo; //#include "naveEnemigo.h"
 #include "nave.h"
@@ -55,6 +56,7 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nave *UNSC;
+    fragata *FRAGATA;
     QList<NaveEnemigo*> enemigos;
 
     QList<NaveEnemigo*> navesEnemigas;// Aquí usas NaveEnemigo, asegúrate de que esté declarado

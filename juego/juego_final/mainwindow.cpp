@@ -27,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(UNSC);
     UNSC->posicion(200,200);
 
+    FRAGATA=new fragata();
+    scene->addItem(FRAGATA);
+    FRAGATA->posicion(100,100);
+
 //    time = new QTimer(this);
 //    connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
 //    time->start(10);
