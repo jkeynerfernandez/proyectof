@@ -18,7 +18,7 @@ private:
     int y=0 ;
     int direccion=0;
     int speed=6;
-    int vidas=3;
+    int vidas=100;
 
 public:
 

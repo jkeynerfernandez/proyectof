@@ -7,7 +7,6 @@ release/nave.o
 release/naveEnemigo.o
 release/qrc_imagenes.o
 release/moc_bala.o
-release/moc_fragata.o
 release/moc_mainwindow.o
 release/moc_nave.o
 release/moc_naveEnemigo.o

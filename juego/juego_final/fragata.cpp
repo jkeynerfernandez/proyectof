@@ -43,3 +43,14 @@ void fragata::posicion(int x_1, int y_1)
     y = y_1;
     setPos(x_1,y_1);
 }
+
+int fragata::getVidas() const
+{
+    return vidas;
+
+}
+
+void fragata::setVidas(int newVidas)
+{
+    vidas = newVidas;
+}

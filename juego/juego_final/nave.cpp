@@ -38,6 +38,7 @@ void nave::Disparar()
     bala *nuevaBala = new bala();
     nuevaBala->setPos(getX() + boundingRect().width(), getY() + boundingRect().height() / 2);
     scene()->addItem(nuevaBala);
+   // nuevaBala->setDireccion(-1);
 }
 
 nave::nave(QObject *parent)

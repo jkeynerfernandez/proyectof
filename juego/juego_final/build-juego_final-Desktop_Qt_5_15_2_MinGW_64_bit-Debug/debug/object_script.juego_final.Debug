@@ -7,7 +7,6 @@ debug/nave.o
 debug/naveEnemigo.o
 debug/qrc_imagenes.o
 debug/moc_bala.o
-debug/moc_fragata.o
 debug/moc_mainwindow.o
 debug/moc_nave.o
 debug/moc_naveEnemigo.o

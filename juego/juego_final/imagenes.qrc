@@ -5,5 +5,6 @@
         <file>imagenes/UNSC/personaje.png</file>
         <file>imagenes/UNSC/bala.png</file>
         <file>imagenes/UNSC/fragata.png</file>
+        <file>imagenes/escenario/game over.jpg</file>
     </qresource>
 </RCC>

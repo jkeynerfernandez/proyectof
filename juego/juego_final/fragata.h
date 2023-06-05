@@ -13,7 +13,7 @@ private:
     int y=0 ;
 
 
-    int vidas=1000;
+    int vidas=100;
 
 public:
      fragata(QGraphicsItem* parent =nullptr);
@@ -29,6 +29,9 @@ public:
 
      int getDireccion() const;
      void setDireccion(int newDireccion);
+
+     int getVidas() const;
+     void setVidas(int newVidas);
 
 private:
     QPixmap pixmap;

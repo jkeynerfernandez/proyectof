@@ -35,7 +35,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>20</x>
       <y>0</y>
       <width>1026</width>
       <height>553</height>
@@ -76,24 +76,11 @@
    <widget class="QLCDNumber" name="vidas">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>520</y>
-      <width>64</width>
+      <x>820</x>
+      <y>120</y>
+      <width>41</width>
       <height>23</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>520</y>
-      <width>41</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>VIDAS</string>
     </property>
    </widget>
   </widget>

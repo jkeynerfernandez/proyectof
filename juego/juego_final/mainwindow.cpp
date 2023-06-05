@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
   //  connect(time, SIGNAL(timeout()), this, SLOT(EliminarBala()));
 
     //connect(timer, SIGNAL(timeout()),this,SLOT(hmov()));
-   // connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
+   connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
 //connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
     //connect(time, &QTimer::timeout, this, &MainWindow::EliminarBala);
 
@@ -153,14 +153,15 @@ void MainWindow::keyRelease(QKeyEvent *evento){
 void MainWindow::ActualizarVidas()
 {
 
-    int vidasRestantes;
-    vidasRestantes = UNSC->getVidas();
-    ui->vidas->display(vidasRestantes);
-    if (vidasRestantes==0){
-   ui->marcoVisualdeljuego->setForegroundBrush(QBrush((QImage(":/imagenes/escenario/gameover.png"))));
-   scene->removeItem(UNSC);
+    int vidasRestantes = FRAGATA->getVidas() ;
 
-    }
+        ui->vidas->display(vidasRestantes);
+        if (vidasRestantes==0){
+       ui->marcoVisualdeljuego->setForegroundBrush(QBrush((QImage(":/imagenes/escenario/game over.jpg"))));
+       scene->removeItem(UNSC);
+       scene->removeItem(FRAGATA);
+
+        }
 
 }
 
@@ -350,7 +351,6 @@ void MainWindow::EliminarBala()
 {
 
 }
-
 
 
 

@@ -9,18 +9,23 @@ class bala : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 private:
-    double velocidadInicial;  // Velocidad inicial de la bala
-    double aceleracion;  // Aceleración de la bala
+    double velocidadInicial;
+    double aceleracion;
+    int posX;
+    int posY;
 
 
 
 public:
     bala();
     bala(double velocidadInicial, double aceleracion);
+    int getPosX() const;
+    int getPosY() const;
    // explicit bala(QObject *parent = nullptr);
 
 public slots:
     void mover();
+    void setDireccion(int velocidadInicial);
 
 private:
     QPixmap imagenBala;

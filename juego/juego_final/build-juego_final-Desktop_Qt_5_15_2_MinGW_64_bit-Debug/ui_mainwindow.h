@@ -13,7 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QLCDNumber>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -29,7 +28,6 @@ public:
     QGraphicsView *marcoVisualdeljuego;
     QPushButton *pushButton;
     QLCDNumber *vidas;
-    QLineEdit *lineEdit;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -50,7 +48,7 @@ public:
         marcoVisualdeljuego = new QGraphicsView(centralwidget);
         marcoVisualdeljuego->setObjectName("marcoVisualdeljuego");
         marcoVisualdeljuego->setEnabled(true);
-        marcoVisualdeljuego->setGeometry(QRect(0, 0, 1026, 553));
+        marcoVisualdeljuego->setGeometry(QRect(20, 0, 1026, 553));
         QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -63,10 +61,7 @@ public:
         pushButton->setGeometry(QRect(10, 520, 75, 24));
         vidas = new QLCDNumber(centralwidget);
         vidas->setObjectName("vidas");
-        vidas->setGeometry(QRect(170, 520, 64, 23));
-        lineEdit = new QLineEdit(centralwidget);
-        lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(170, 520, 41, 22));
+        vidas->setGeometry(QRect(820, 120, 41, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -89,7 +84,6 @@ public:
         marcoVisualdeljuego->setToolTip(QCoreApplication::translate("MainWindow", "<html><head/><body><p><img src=\":/imagenes/escenario/calles1.jpg\"/></p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        lineEdit->setText(QCoreApplication::translate("MainWindow", "VIDAS", nullptr));
     } // retranslateUi
 
 };
