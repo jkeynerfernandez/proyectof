@@ -7,6 +7,7 @@
 #include <QPixmap>
 #include <QTimer>
 #include <personaje.h>
+#include  "bala.h"
 
 class nave : public QObject, public QGraphicsItem
 {
@@ -61,6 +62,8 @@ public:
 
     int getVidas() const;
     void setVidas(int newVidas);
+
+    void Disparar();
 
 signals:
 

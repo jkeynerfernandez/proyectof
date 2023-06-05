@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     FRAGATA=new fragata();
     scene->addItem(FRAGATA);
-    FRAGATA->posicion(100,100);
+    FRAGATA->posicion(600,100);
 
 //    time = new QTimer(this);
 //    connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
@@ -115,6 +115,7 @@ void MainWindow::keyPressEvent(QKeyEvent *evento)
     }
 
     else if(evento->key()==Qt::Key_P ){
+
 
         nuevabala = new bala();
         scene->addItem(nuevabala);
@@ -223,7 +224,7 @@ void MainWindow::generarNavesEnemigas()
         for (int i = 0; i < numNaves; ++i) {
             NaveEnemigo *enemigo = new NaveEnemigo();
             // Establecer las posiciones aleatorias para cada nave enemiga
-            x = QRandomGenerator::global()->bounded( 1000- enemigo->boundingRect().width());
+            x = QRandomGenerator::global()->bounded( 200- enemigo->boundingRect().width());
             y = rand() % static_cast<int>(500 - enemigo->boundingRect().height());
 
 
@@ -286,10 +287,10 @@ void MainWindow::ActualizarPosicion()
 
      QList<NaveEnemigo*> navesEliminadas;
     for (NaveEnemigo *enemigo : navesEnemigas) {
-        enemigo->moveBy(-6, 0);
+        enemigo->moveBy(6, 0);
         enemigo->setX(enemigo->pos().x());
         enemigo->setY(enemigo->pos().y());// Ajusta la velocidad de desplazamiento según tus necesidades
-        if (enemigo->pos().x() + enemigo->boundingRect().width() < 0) {
+        if (enemigo->pos().x() + enemigo->boundingRect().width() > 1020) {
                     // Eliminar la nave enemiga de la escena
             scene->removeItem(enemigo);
             navesEnemigas.removeOne(enemigo);

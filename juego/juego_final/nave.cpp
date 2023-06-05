@@ -1,5 +1,6 @@
 #include "nave.h"
 #include<QTimer>
+#include "mainwindow.h"
 
 int nave::getDireccion() const
 {
@@ -30,6 +31,13 @@ int nave::getVidas() const
 void nave::setVidas(int newVidas)
 {
     vidas = newVidas;
+}
+
+void nave::Disparar()
+{
+    bala *nuevaBala = new bala();
+    nuevaBala->setPos(getX() + boundingRect().width(), getY() + boundingRect().height() / 2);
+    scene()->addItem(nuevaBala);
 }
 
 nave::nave(QObject *parent)

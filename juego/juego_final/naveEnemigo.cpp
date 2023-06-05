@@ -48,7 +48,7 @@ void NaveEnemigo::Disparar()
 
     bala* nuevaBala = new bala();
     scene()->addItem(nuevaBala);
-    nuevaBala->setPos(getX() - boundingRect().width() / 2, getY());
+    nuevaBala->setPos(getX() + boundingRect().width() / 2, getY());
 
 
 }
