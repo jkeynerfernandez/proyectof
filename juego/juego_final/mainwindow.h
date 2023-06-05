@@ -46,12 +46,15 @@ private slots:
     void ActualizarPosicionBala();
     void EliminarBala();
     void ReiniciarPosicionUNSC();
-   // void EliminarFantasma();
+    void ataqueenemigo();
+
 
 private:
     int vel;
 
     bala *nuevabala;
+
+
     //NaveEnemigo *enemigo;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -61,10 +64,13 @@ private:
 
     QList<NaveEnemigo*> navesEnemigas;// Aquí usas NaveEnemigo, asegúrate de que esté declarado
     QList<bala*> balas;
+
     QTimer *tiempoparaevaluarcolision;
     QTimer *timer;//para actualizacion
     QTimer *time;//para la bala
+    QTimer *disparoenemigo;
     QTimer *tempo;
+
    // mov_parabolico *bala;
     QVector<QGraphicsItem*> Obstaculos;
 

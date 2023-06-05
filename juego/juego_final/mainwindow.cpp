@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "naveEnemigo.h"
 #include "bala.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -47,7 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
    // generarNavesEnemigas();
     ActualizarPosicion();
 
-
+    disparoenemigo= new QTimer(this);
+    connect(disparoenemigo, &QTimer::timeout, this, &MainWindow::ataqueenemigo);
 
 
 
@@ -206,6 +208,9 @@ void MainWindow::EvaluarColision()
 
 void MainWindow::generarNavesEnemigas()
 {
+
+    int x;
+    int y;
     // Eliminar las naves enemigas existentes
         foreach (NaveEnemigo *enemigo, navesEnemigas) {
             scene->removeItem(enemigo);
@@ -218,8 +223,21 @@ void MainWindow::generarNavesEnemigas()
         for (int i = 0; i < numNaves; ++i) {
             NaveEnemigo *enemigo = new NaveEnemigo();
             // Establecer las posiciones aleatorias para cada nave enemiga
-            int x = QRandomGenerator::global()->bounded( 1000- enemigo->boundingRect().width());
-            int y = rand() % static_cast<int>(500 - enemigo->boundingRect().height());
+            x = QRandomGenerator::global()->bounded( 1000- enemigo->boundingRect().width());
+            y = rand() % static_cast<int>(500 - enemigo->boundingRect().height());
+
+
+
+            QTimer* disparoenemigo = new QTimer(this);
+               disparoenemigo->setSingleShot(false);  // Para que se repita automáticamente
+               connect(disparoenemigo, &QTimer::timeout, enemigo, &NaveEnemigo::Disparar);
+
+               disparoenemigo->start(1000);
+               //enemigo->setX(x);
+               //enemigo->setY(y);
+
+
+
 
             enemigo->setPos(x, y);
             scene->addItem(enemigo);
@@ -227,7 +245,22 @@ void MainWindow::generarNavesEnemigas()
 
 
         }
+
+
 }
+void MainWindow::ataqueenemigo()
+{
+    NaveEnemigo* enemigo = qobject_cast<NaveEnemigo*>(sender());
+    if (enemigo) {
+        // Crear una bala y agregarla a la escena en la posición del enemigo
+        bala* nuevaBala = new bala();
+        scene->addItem(nuevaBala);
+        nuevaBala->setPos(enemigo->getX() + enemigo->boundingRect().width() / 2, enemigo->getY());
+    }
+}
+
+
+
 void MainWindow::CrearBala()
 {
     // Crear una nueva bala con velocidad inicial y aceleración
@@ -253,7 +286,9 @@ void MainWindow::ActualizarPosicion()
 
      QList<NaveEnemigo*> navesEliminadas;
     for (NaveEnemigo *enemigo : navesEnemigas) {
-        enemigo->moveBy(-6, 0); // Ajusta la velocidad de desplazamiento según tus necesidades
+        enemigo->moveBy(-6, 0);
+        enemigo->setX(enemigo->pos().x());
+        enemigo->setY(enemigo->pos().y());// Ajusta la velocidad de desplazamiento según tus necesidades
         if (enemigo->pos().x() + enemigo->boundingRect().width() < 0) {
                     // Eliminar la nave enemiga de la escena
             scene->removeItem(enemigo);
@@ -269,6 +304,8 @@ void MainWindow::ActualizarPosicion()
         if (navesEnemigas.isEmpty()) {
                 generarNavesEnemigas();
             }
+
+
 
 
 

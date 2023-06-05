@@ -43,6 +43,23 @@ NaveEnemigo::NaveEnemigo(QObject *parent):nave(parent)
 //    }
 //}
 
+void NaveEnemigo::Disparar()
+{
+
+    bala* nuevaBala = new bala();
+    scene()->addItem(nuevaBala);
+    nuevaBala->setPos(getX() - boundingRect().width() / 2, getY());
+
+
+}
+
+
+
+
+
+
+
+
 void NaveEnemigo::manejarDestruccion()
 {
     // Eliminar el enemigo de la escena y de la lista de enemigos

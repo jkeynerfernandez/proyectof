@@ -32,6 +32,7 @@ public:
 
     void run();
     void move();
+    void Disparar();
    // void inicializarValores();
 
 
