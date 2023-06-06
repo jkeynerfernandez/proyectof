@@ -11,18 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,ui->marcoVisualdeljuego->width()-5, ui->marcoVisualdeljuego->height()-5);//area de mapa
     ui->marcoVisualdeljuego->setScene(scene);
-    //generarEnemigos();
 
-   // generarEnemigos();
-
-       // Conectar temporizador al método ActualizarPosicion()
- connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion);
+    connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion);
 
     ui->marcoVisualdeljuego->setBackgroundBrush(QBrush((QImage(":/imagenes/escenario/fondo.png"))));
 
 
-   // pelota = new mov_parabolico(0,-300,60,1.04);
-    //scene->addItem(pelota);
 
     UNSC = new nave();
     scene->addItem(UNSC);
@@ -53,19 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-//    timer = new QTimer();
-//    timer->start(10);
-   // timer->stop();
 
-   // time = new QTimer(this);
-    //connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala);
-
-  //  connect(time, SIGNAL(timeout()), this, SLOT(EliminarBala()));
-
-    //connect(timer, SIGNAL(timeout()),this,SLOT(hmov()));
    connect(timer,SIGNAL(timeout()),this,SLOT(ActualizarVidas()));
-//connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
-    //connect(time, &QTimer::timeout, this, &MainWindow::EliminarBala);
 
 
 
@@ -178,10 +161,7 @@ void MainWindow::EvaluarColision()
                 scene->removeItem(nuevabala);
                 delete nuevabala;
                 break;
-               // tiempoparaevaluarcolision->stop();
 
-              // tiempoparaevaluarcolision->stop();
-                 // Salir del bucle para evitar colisiones múltiples en el mismo paso de tiempo
             }
     }
 
@@ -192,21 +172,16 @@ void MainWindow::EvaluarColision()
     }
 
 
-                // Detener el temporizador después de evaluar la colisión
+
     tiempoparaevaluarcolision->stop();
 
     if (navesEnemigas.isEmpty()) {
            generarNavesEnemigas();
        }
 
-                //tiempoparaevaluarcolision->stop();
+
 }
-//    QVector<QGraphicsItem*>::Iterator it;
-//    for(it=vec.begin(); it!=vec.end(); it++)
-//    {
-//        if((*it)->collidesWithItem(UNSC) || (*it)->collidesWithItem(COVENANT))
-//            return true;}
-//    return false;
+
 
 
 
@@ -223,11 +198,11 @@ void MainWindow::generarNavesEnemigas()
         }
         navesEnemigas.clear();
 
-        // Generar nuevas naves enemigas
+ // Generar nuevas naves enemigas
         int numNaves = 3;
         for (int i = 0; i < numNaves; ++i) {
             NaveEnemigo *enemigo = new NaveEnemigo();
-            // Establecer las posiciones aleatorias para cada nave enemiga
+ // Establecer las posiciones aleatorias para cada nave enemiga
             x = QRandomGenerator::global()->bounded( 200- enemigo->boundingRect().width());
             y = rand() % static_cast<int>(500 - enemigo->boundingRect().height());
 
@@ -242,8 +217,7 @@ void MainWindow::generarNavesEnemigas()
 
                disparoenemigo->start(1500);
                ActualizarVidas();
-               //enemigo->setX(x);
-               //enemigo->setY(y);
+
 
 
 

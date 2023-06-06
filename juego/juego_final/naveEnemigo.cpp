@@ -1,30 +1,20 @@
 #include "naveEnemigo.h"
 #include "mainwindow.h"
 
-//enemigo::enemigo(QObject *parent)
 
-//{
-//    pixmap = new QPixmap(":/imagenes/enemigo/sprite1.png");
-
-//}
-
-//void enemigo::run()
-//{
-
-//}
 void inicializarValores();
 
 
 NaveEnemigo::NaveEnemigo(QObject *parent):nave(parent)
 {
-    pixmap= new QPixmap(":/imagenes/enemigo/enemigo.png");  // Ruta de la imagen del enemigo
+    pixmap= new QPixmap(":/imagenes/enemigo/enemigo.png");
 
-           // Conectar la señal de destrucción a la ranura correspondiente
+
     connect(this, &NaveEnemigo::destruido, this, &NaveEnemigo::manejarDestruccion);
-    //   connect(this, SIGNAL(destruido()), this, SLOT(manejarDestruccion());
 
 
-    //inicializarValores();
+
+
 }
 
 
@@ -37,7 +27,7 @@ void NaveEnemigo::Disparar()
     nuevaBala->setPos(getX() + boundingRect().width() / 2, getY());
 
 
-    //nuevaBala->setDireccion(1);
+
 
 
 }

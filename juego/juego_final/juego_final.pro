@@ -46,5 +46,7 @@ RESOURCES += \
     imagenes.qrc
 
 DISTFILES += \
-    imagenes/UNSC/fragata.png
+    imagenes/UNSC/fragata.png \
+    imagenes/escenario/trailer.mp4
 
+QT += multimedia

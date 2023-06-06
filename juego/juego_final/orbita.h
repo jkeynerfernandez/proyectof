@@ -62,7 +62,7 @@ public:
     float getScale() const;
     int getId() const;
 
-private: // Methods
+private:
 
 };
 

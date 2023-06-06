@@ -23,7 +23,7 @@ public:
 
 public:
 
-  //  NaveEnemigo();
+
 
 
 
@@ -33,7 +33,7 @@ public:
     void run();
     void move();
     void Disparar();
-   // void inicializarValores();
+
 
 
 private: QList<NaveEnemigo*> enemigos;

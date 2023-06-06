@@ -12,6 +12,7 @@
 #include "bala.h"
 #include "fragata.h"
 #include "orbita.h"
+#include <QMediaPlayer>
 
 
 
@@ -35,7 +36,7 @@ public:
     ~MainWindow();
 
     void keyPressEvent(QKeyEvent *evento);
-  //  void keyReleaseEvent(QKeyEvent *evento);
+
 
     void keyRelease(QKeyEvent *evento);
     void generarNavesEnemigas();

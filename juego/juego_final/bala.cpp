@@ -38,7 +38,7 @@ void bala::mover()
     double desplazamiento =(velocidadInicial + velocidadFinal)*tiempo/2.0;
 
 
-    setPos(x() + desplazamiento, y()); // Puedes ajustar la velocidad cambiando el valor de 1
+    setPos(x() + desplazamiento, y());
 }
 
 void bala::setDireccion(int velocidadInicial)
