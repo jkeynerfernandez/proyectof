@@ -30,14 +30,15 @@ void bala::mover()
 {
 
 
-    //double tiempo = 0.01;  // Incremento de tiempo (puedes ajustar este valor según tus necesidades)
-    //double velocidadFinal = velocidadInicial + aceleracion * tiempo;
+    double tiempo=0.01;
+    double aceleracion=1.0;
 
-    // Mover la bala según la velocidad final calculada
-   // setPos(x() + velocidadFinal, y());
-    // Mover la bala horizontalmente en el eje X
+    double velocidadInicial= 250.0;
+    double velocidadFinal= velocidadInicial + (aceleracion*tiempo);
+    double desplazamiento =(velocidadInicial + velocidadFinal)*tiempo/2.0;
 
-    setPos(x() + 5, y()); // Puedes ajustar la velocidad cambiando el valor de 1
+
+    setPos(x() + desplazamiento, y()); // Puedes ajustar la velocidad cambiando el valor de 1
 }
 
 void bala::setDireccion(int velocidadInicial)

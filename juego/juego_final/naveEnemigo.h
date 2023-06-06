@@ -37,6 +37,7 @@ public:
 
 
 private: QList<NaveEnemigo*> enemigos;
+    fragata* fragataPtr;
 
 signals:
     void destruido();

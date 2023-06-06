@@ -152,16 +152,19 @@ void MainWindow::keyRelease(QKeyEvent *evento){
 }
 void MainWindow::ActualizarVidas()
 {
-
     int vidasRestantes = FRAGATA->getVidas() ;
 
-        ui->vidas->display(vidasRestantes);
-        if (vidasRestantes==0){
-       ui->marcoVisualdeljuego->setForegroundBrush(QBrush((QImage(":/imagenes/escenario/game over.jpg"))));
-       scene->removeItem(UNSC);
-       scene->removeItem(FRAGATA);
+            ui->vidas->display(vidasRestantes);
 
-        }
+
+            if (vidasRestantes==0){
+           ui->marcoVisualdeljuego->setForegroundBrush(QBrush((QImage(":/imagenes/escenario/game over.jpg"))));
+           scene->removeItem(UNSC);
+           scene->removeItem(FRAGATA);
+
+            }
+
+
 
 }
 
@@ -234,7 +237,11 @@ void MainWindow::generarNavesEnemigas()
                disparoenemigo->setSingleShot(false);  // Para que se repita automáticamente
                connect(disparoenemigo, &QTimer::timeout, enemigo, &NaveEnemigo::Disparar);
 
-               disparoenemigo->start(1000);
+
+
+
+               disparoenemigo->start(1500);
+               ActualizarVidas();
                //enemigo->setX(x);
                //enemigo->setY(y);
 
@@ -263,23 +270,11 @@ void MainWindow::ataqueenemigo()
 
 
 
+
+
 void MainWindow::CrearBala()
 {
-    // Crear una nueva bala con velocidad inicial y aceleración
-  //  double velocidadInicial = 10.0;  // Ajusta este valor según la velocidad inicial deseada
-   // double aceleracion = 0.5;  // Ajusta este valor según la aceleración deseada
- //   nuevabala = new bala(velocidadInicial, aceleracion);
 
- //   nuevabala->setPos(UNSC->getX() + UNSC->boundingRect().width() / 2, UNSC->getY() + UNSC->boundingRect().height() / 2);
-
- //   balas.append(nuevabala);
- //   scene->addItem(nuevabala);
-   // balas.append(nuevabala);
-
-//    connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala);
-    //time->start(10);
-
-    // Resto del código...
 }
 
 
@@ -351,7 +346,6 @@ void MainWindow::EliminarBala()
 {
 
 }
-
 
 
 

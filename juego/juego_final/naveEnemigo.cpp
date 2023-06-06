@@ -1,4 +1,5 @@
 #include "naveEnemigo.h"
+#include "mainwindow.h"
 
 //enemigo::enemigo(QObject *parent)
 
@@ -22,26 +23,11 @@ NaveEnemigo::NaveEnemigo(QObject *parent):nave(parent)
     connect(this, &NaveEnemigo::destruido, this, &NaveEnemigo::manejarDestruccion);
     //   connect(this, SIGNAL(destruido()), this, SLOT(manejarDestruccion());
 
+
     //inicializarValores();
 }
 
-//void NaveEnemigo::inicializarValores()
-//{
-//    velocidad = rand() % (velocidadMaxima - velocidadMinima + 1) + velocidadMinima;
-//    posicionInicialX = rand() % (posXMaxima - posXMinima + 1) + posXMinima;
-//    setX(posicionInicialX);
-//}
 
-//void NaveEnemigo::move()
-//{
-//    setX(getX() - velocidad);
-//    setPos(getX(), getY());
-
-//           // Verificar si la nave enemiga ha salido de la escena
-//    if (getX() + ancho < 0) {
-//    emit destruido(); // Emitir señal de destrucción
-//    }
-//}
 
 void NaveEnemigo::Disparar()
 {
@@ -49,6 +35,8 @@ void NaveEnemigo::Disparar()
     bala* nuevaBala = new bala();
     scene()->addItem(nuevaBala);
     nuevaBala->setPos(getX() + boundingRect().width() / 2, getY());
+
+
     //nuevaBala->setDireccion(1);
 
 

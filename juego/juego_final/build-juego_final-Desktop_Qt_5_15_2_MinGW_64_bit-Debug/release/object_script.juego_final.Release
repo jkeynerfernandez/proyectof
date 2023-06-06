@@ -5,8 +5,10 @@ release/mainwindow.o
 release/mov_parabolico.o
 release/nave.o
 release/naveEnemigo.o
+release/orbita.o
 release/qrc_imagenes.o
 release/moc_bala.o
 release/moc_mainwindow.o
 release/moc_nave.o
 release/moc_naveEnemigo.o
+release/moc_orbita.o
