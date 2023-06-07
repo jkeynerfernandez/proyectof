@@ -49,7 +49,7 @@ private:
 
 
 private slots:
-   // void on_pushButton_clicked();
+
     void EvaluarColision();
     void ActualizarPosicion();
     void ActualizarVidas();
@@ -69,7 +69,6 @@ private:
     bala *nuevabala;
 
 
-    //NaveEnemigo *enemigo;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     nave *UNSC;
@@ -86,25 +85,20 @@ private:
     QTimer *disparoenemigo;
     QTimer *tempo;
 
-   // mov_parabolico *bala;
     QVector<QGraphicsItem*> Obstaculos;
 
-   // bool EvaluarColision(QVector<QGraphicsItem*> vec);
     bool EvaluarColisionnaveEnemigo(QVector<QGraphicsItem*> vec);
 
 
 
 
-    //_________________________________________
 
 
 
 
 
- //   void generarEnemigos();
 };
 
 #endif // MAINWINDOW_H
-
 
 

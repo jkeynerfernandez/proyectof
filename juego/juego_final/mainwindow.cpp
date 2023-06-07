@@ -26,11 +26,6 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(FRAGATA);
     FRAGATA->posicion(600,100);
 
-//    time = new QTimer(this);
-//    connect(time, &QTimer::timeout, this, &MainWindow::ActualizarPosicionBala); // Conecta el temporizador a la ranura
-//    time->start(10);
-    //bala= new mov_parabolico(0,-300,30,0);
-    //bala *nuevabala  = new bala();
 
 
 
@@ -39,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, &QTimer::timeout, this, &MainWindow::ActualizarPosicion); // Conecta el temporizador al método ActualizarPosicion()
     generarNavesEnemigas();
 
-   // generarNavesEnemigas();
     ActualizarPosicion();
 
     disparoenemigo= new QTimer(this);
@@ -280,12 +274,6 @@ void MainWindow::ActualizarPosicion()
 
 
 
-//        if (nuevabala->pos().x() + nuevabala->boundingRect().width() < 0) {
-//                    // Eliminar la nave enemiga de la escena
-//                    scene->removeItem(nuevabala);
-//                    navesEnemigas.removeOne(nuevabala);
-//                    delete nuevabala;
-//                }
     }}
 
 void MainWindow::ReiniciarPosicionUNSC()
@@ -309,10 +297,6 @@ void MainWindow::ActualizarPosicionBala()
        }
 
 
-//       nuevabala->CalcularPosicion();
-//       nuevabala->ActualizarVelocidad();
-//       if(nuevabala->getPosy()>0){
-//        time->stop();}
 
 }
 
@@ -320,7 +304,6 @@ void MainWindow::EliminarBala()
 {
 
 }
-
 
 
 

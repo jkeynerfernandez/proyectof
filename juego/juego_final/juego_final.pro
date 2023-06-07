@@ -22,8 +22,7 @@ SOURCES += \
     mainwindow.cpp \
     mov_parabolico.cpp \
     nave.cpp \
-    naveEnemigo.cpp \
-    orbita.cpp
+    naveEnemigo.cpp
 
 HEADERS += \
     bala.h \
@@ -31,8 +30,7 @@ HEADERS += \
     mainwindow.h \
     mov_parabolico.h \
     nave.h \
-    naveEnemigo.h \
-    orbita.h
+    naveEnemigo.h
 
 FORMS += \
     mainwindow.ui

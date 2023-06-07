@@ -21,7 +21,7 @@ public:
     bala(double velocidadInicial, double aceleracion);
     int getPosX() const;
     int getPosY() const;
-   // explicit bala(QObject *parent = nullptr);
+
 
 public slots:
     void mover();

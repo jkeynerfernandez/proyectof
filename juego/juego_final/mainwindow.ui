@@ -76,8 +76,8 @@
    <widget class="QLCDNumber" name="vidas">
     <property name="geometry">
      <rect>
-      <x>820</x>
-      <y>120</y>
+      <x>960</x>
+      <y>530</y>
       <width>41</width>
       <height>23</height>
      </rect>

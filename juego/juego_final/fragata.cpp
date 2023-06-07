@@ -9,7 +9,7 @@ fragata::fragata(QGraphicsItem* parent) :  QGraphicsPixmapItem(parent)
     setPixmap(pixmap);
 
 
-    //connect(this, &fragata::destruido, this, &fragata::manejarDestruccion);
+
 }
 
 int fragata::getX() const

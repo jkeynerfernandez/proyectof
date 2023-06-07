@@ -5,10 +5,8 @@ debug/mainwindow.o
 debug/mov_parabolico.o
 debug/nave.o
 debug/naveEnemigo.o
-debug/orbita.o
 debug/qrc_imagenes.o
 debug/moc_bala.o
 debug/moc_mainwindow.o
 debug/moc_nave.o
 debug/moc_naveEnemigo.o
-debug/moc_orbita.o

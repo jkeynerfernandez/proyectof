@@ -61,7 +61,7 @@ public:
         pushButton->setGeometry(QRect(10, 520, 75, 24));
         vidas = new QLCDNumber(centralwidget);
         vidas->setObjectName("vidas");
-        vidas->setGeometry(QRect(820, 120, 41, 23));
+        vidas->setGeometry(QRect(960, 530, 41, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");

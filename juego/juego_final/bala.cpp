@@ -9,6 +9,9 @@ bala::bala()
     timer= new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(mover()));
     timer->start(10);
+
+    setFlag(QGraphicsItem::ItemIsMovable);
+
 }
 
 int bala::getPosX() const
