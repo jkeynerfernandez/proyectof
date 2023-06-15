@@ -86,8 +86,8 @@ void mov_parabolico::CalcularVelocidad()
 {
     velx=vel*cos(ang);
     vely=vel*sin(ang)+GRAV*tiempo;
-}
 
+}
 void mov_parabolico::ActualizarVelocidad()
 {
     vel=sqrt(velx*velx+vely*vely);

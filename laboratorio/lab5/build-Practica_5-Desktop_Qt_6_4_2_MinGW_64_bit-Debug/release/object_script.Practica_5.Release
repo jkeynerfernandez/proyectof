@@ -1,0 +1,10 @@
+release/bomba.o
+release/main.o
+release/mainwindow.o
+release/muro.o
+release/muro_destruible.o
+release/personaje.o
+release/puerta_llave.o
+release/qrc_Images.o
+release/moc_mainwindow.o
+release/moc_personaje.o

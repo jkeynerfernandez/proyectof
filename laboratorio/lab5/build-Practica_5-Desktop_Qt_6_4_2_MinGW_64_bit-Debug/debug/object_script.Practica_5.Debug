@@ -1,0 +1,10 @@
+debug/bomba.o
+debug/main.o
+debug/mainwindow.o
+debug/muro.o
+debug/muro_destruible.o
+debug/personaje.o
+debug/puerta_llave.o
+debug/qrc_Images.o
+debug/moc_mainwindow.o
+debug/moc_personaje.o

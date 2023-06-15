@@ -193,7 +193,7 @@ void MainWindow::generarNavesEnemigas()
         navesEnemigas.clear();
 
  // Generar nuevas naves enemigas
-        int numNaves = 3;
+        int numNaves = 4;
         for (int i = 0; i < numNaves; ++i) {
             NaveEnemigo *enemigo = new NaveEnemigo();
  // Establecer las posiciones aleatorias para cada nave enemiga

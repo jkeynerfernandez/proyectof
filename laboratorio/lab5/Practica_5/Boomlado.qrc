@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/Boomdelado">
+        <file>Images/Boom de lado.PNG</file>
+        <file>Images/boom pal otro lado.PNG</file>
+    </qresource>
+</RCC>

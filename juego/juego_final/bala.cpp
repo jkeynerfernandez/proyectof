@@ -34,7 +34,7 @@ void bala::mover()
 
 
     double tiempo=0.01;
-    double aceleracion=1.0;
+    double aceleracion=10.0;
 
     double velocidadInicial= 250.0;
     double velocidadFinal= velocidadInicial + (aceleracion*tiempo);
